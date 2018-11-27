@@ -1,6 +1,5 @@
 package exp_3;
 
-import exp_3.Strack.Expression;
 import exp_3.Strack.SeqStack;
 
 import java.util.Scanner;
