@@ -49,7 +49,7 @@ public class BinaryTree<T> {
 
 
     //叶子结点数目
-    public int leafsize(BinaryTree<T>tree2) {
+    public int leafsize() {
         LinkedQueue<BinaryNode<T>> queue1 = new LinkedQueue<>();
         SeqStack<BinaryNode<T>> stack1 = new SeqStack<>();
         BinaryNode<T> p = this.root;
@@ -165,6 +165,23 @@ public class BinaryTree<T> {
         System.out.println();
     }
     /*后序遍历*/
+    public void postorder()                                //输出后根次序遍历序列
+    {
+        System.out.print("后根次序遍历二叉树：(递归)  ");
+        postorder(this.root);
+        System.out.println();
+    }
+    private void postorder(BinaryNode<T> p)                //后根次序遍历以p结点为根的子树，递归方法
+    {
+        if (p!=null)
+        {
+            postorder(p.left);
+            postorder(p.right);
+            System.out.print(p.data.toString()+" ");       //后访问当前结点元素
+        }
+    }
+
+
 
     public BinaryTree(T[] prelist)                         //以标明空子树的先根遍历序列构造二叉树
     {
@@ -191,6 +208,5 @@ public class BinaryTree<T> {
         }
         return p;
     }
-
 
 }
