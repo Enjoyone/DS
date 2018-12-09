@@ -1,5 +1,6 @@
 package exp_3.Binary_Tree;
 
+import exp_3.Queue.LinkedQueue;
 import exp_3.Strack.SeqStack;
 /*二叉树类*/
 public class BinaryTree<T> {
@@ -22,27 +23,58 @@ public class BinaryTree<T> {
 
     public int size()       /*结点数*/                               //返回二叉树的结点数
     {
-        return size(root);
+        return size2(root);
     }
-    public int size(BinaryNode<T> p)                       //返回以p结点为根的子树的结点数
+    public int size2(BinaryNode<T> p)                       //返回以p结点为根的子树的结点数
     {
         if (p==null)
             return 0;
-        return 1+size(p.left)+size(p.right);
+        return 1+size2(p.left)+size2(p.right);
     }
+
 
     public int height()                                    //返回二叉树的高度
     {
-        return height(root);
+        return height2(root);
     }
-    public int height(BinaryNode<T> p)                     //返回以p结点为根的子树高度，后根次序遍历
+    public int height2(BinaryNode<T> p)                     //返回以p结点为根的子树高度，后根次序遍历
     {
         if (p==null)
             return 0;
-        int lh = height(p.left);                           //返回左子树的高度
-        int rh = height(p.right);                          //返回右子树的高度
+        int lh = height2(p.left);                           //返回左子树的高度
+        int rh = height2(p.right);                          //返回右子树的高度
         return (lh>=rh) ? lh+1 : rh+1;                     //当前子树高度为较高子树的高度加1
     }
+
+
+
+    //叶子结点数目
+    public int leafsize(BinaryTree<T>tree2) {
+        LinkedQueue<BinaryNode<T>> queue1 = new LinkedQueue<>();
+        SeqStack<BinaryNode<T>> stack1 = new SeqStack<>();
+        BinaryNode<T> p = this.root;
+        while (p != null || !stack1.isEmpty()) {//p非空或栈非空时
+            if (p != null) {
+                //System.out.print(p.data + " ");              //访问结点
+                stack1.push(p);//p结点入栈
+                queue1.add(p);
+                p = p.left;                                  //进入左子树
+            } else                                           //p为空且栈非空时
+            {
+                p = stack1.pop();                             //p指向出栈结点
+                p = p.right;          //进入右子树
+            }
+        }
+        int n=0;
+        while (!queue1.isEmpty()){
+           p= queue1.poll();
+           if (p.isLeaf())
+               n++;
+        }
+
+        return n;
+    }
+
 
     public boolean isEmpty(){
         return this.root==null;
@@ -87,28 +119,32 @@ public class BinaryTree<T> {
         }
     }
 
-    /*中序遍历---非递归*/
+
     public void NOpreorder()                         //先根次序遍历二叉树的非递归算法
     {
         System.out.print("先根次序遍历（非递归）：  ");
         SeqStack<BinaryNode<T>> stack = new SeqStack<BinaryNode<T>>(); //创建空栈
         BinaryNode<T> p = this.root;
-        while (p!=null || !stack.isEmpty())                //p非空或栈非空时
-            if (p!=null)
-            {
-                System.out.print(p.data+" ");              //访问结点
+        while (p != null || !stack.isEmpty()) {//p非空或栈非空时
+            if (p != null) {
+                System.out.print(p.data + " ");              //访问结点
                 stack.push(p);                             //p结点入栈
-                p=p.left;                                  //进入左子树
+                p = p.left;                                  //进入左子树
             }
             else                                           //p为空且栈非空时
             {
                 System.out.print("∧ ");
-                p=stack.pop();                             //p指向出栈结点
-                p=p.right;                                 //进入右子树
+                p = stack.pop();                             //p指向出栈结点
+                p = p.right;          //进入右子树
+                if (p == null && stack.isEmpty())
+                    System.out.print("∧ ");
             }
+            /*最后出现栈为空，但是没有判断完！*/
+            System.out.print("");
+        }
         System.out.println();
     }
-
+    /*中序遍历---非递归*/
     public void NOinorder()                         //中根次序遍历二叉树的非递归算法
     {
         System.out.print("中根次序遍历（非递归）：  ");
@@ -134,6 +170,9 @@ public class BinaryTree<T> {
     {
         this.root = create(prelist);
     }
+
+
+
     //以从i开始的标明空子树的先根序列，创建一棵以prelist[i]为根的子树，返回根结点，递归方法
     private int i=0;
     private BinaryNode<T> create(T[] prelist)

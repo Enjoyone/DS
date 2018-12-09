@@ -12,9 +12,12 @@ public class BinaryNode<T>{
     public BinaryNode(T data){
         this(data,null,null);
     }//构造data的叶子结点
+
+
     public String ToString(){
         return this.data.toString();
     }
+
     public boolean isLeaf(){
         return this.left==null&&this.right==null;
     }//是否为叶子结点
