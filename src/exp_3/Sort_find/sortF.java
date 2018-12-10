@@ -15,8 +15,14 @@ public  class sortF {
     }
     //并统计在各种排序方法中关键字的比较次数，最后输出各类排序方法的排序结果及关键字的比较次数。
 
+
     //直接插入排序
     public void straight_insertion(){
+
+
+
+
+
 
 
     }
