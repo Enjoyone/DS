@@ -7,27 +7,26 @@ public class Tree<T> {
     {
         this.root=null;
     }
+
     public boolean isEmpty()                     //判断是否空树
     {
         return this.root==null;
     }
 
     //3. 树的横向凹入表示法
-    public String toString2()                     //返回树的横向凹入表示字符串，以先根次序遍历树
+    public String toString()                     //返回树的横向凹入表示字符串，以先根次序遍历树
     {
-        return "树的横向凹入表示： \n "+toString3(root,"");
+        return "树的横向凹入表示： \n "+toString(root,"");
     }
     //先根次序遍历以p为根的子树，tab指定缩进量，返回子树的横向凹入表示字符串，递归算法
-    private String toString3(TreeNode<T> p, String tab)
+    private String toString(TreeNode<T> p, String tab)
     {
         if (p==null)
             return "";
-        return tab+p.data.toString()+"\n" + toString3(p.child,tab+"\t") + toString3(p.sibling,tab);//递归调用
+        return tab+p.data.toString()+"\n" + toString(p.child,tab+"\t") + toString(p.sibling,tab);//递归调用
     }
-    //【例6.6】   以树的横向凹入表示构造一棵城市树（森林）。
 
-    //以下第4版教材未给出
-    //树的先根和后根次序遍历算法
+
     public void preorder()                                 //输出树的先根次序遍历序列，算法同二叉树
     {
         System.out.print("树的先根次序遍历序列：  ");
