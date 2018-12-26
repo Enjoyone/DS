@@ -5,7 +5,7 @@ import T_Single.Addible;
 //稀疏矩阵非零元素三元组类
 
 public class Triple implements Comparable<Triple>, Addible<Triple> {
-  int row,column,value;/*行，列，值*/
+    int row,column,value;/*行，列，值*/
 
     public Triple(int row,int column,int value){
         if (row>=0&&column>=0){

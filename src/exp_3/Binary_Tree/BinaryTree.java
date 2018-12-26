@@ -209,4 +209,18 @@ public class BinaryTree<T> {
         return p;
     }
 
+    public String toString02(){
+        return "树的横向凹入表示：\n"+toString01("",root,"");
+    }
+    private String toString01(String x,BinaryNode<T>p,String tab){
+        if (p==null)
+            return "";
+        return tab+x.toString()+p.data.toString()+"\n"+toString01("l",p.left,tab+"\t")+toString01("r",p.right,tab);
+
+    }
+
+
+
+
+
 }

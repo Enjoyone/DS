@@ -1,8 +1,6 @@
 package exp_3;
 
 import exp_3.Binary_Tree.BinaryTree;
-import exp_3.Binary_Tree.Tree;
-import exp_3.Binary_Tree.TreeNode;
 
 public class BinaryTree_test {
     public static void main(String[] args) {
@@ -23,15 +21,9 @@ public class BinaryTree_test {
         //tree01.NOinorder();
         //tree01.postorder();
 
-        String list1[]={"A","\tB","\t\tE","\t\tF","\tC","\tD","\t\tG","H","\tI","\t\tJ"};
-        System.out.println("以凹入方式打印输出一棵二叉树:");
-        Tree<String> tree =Tree.create(list1);      //以树的横向凹入表示法构造树（森林）
-        tree.preorder();                                   //输出树的先根次序遍历序列
-        tree.postorder();                                  //输出树的后根次序遍历序列
-        System.out.print(tree.toString());
-
 
         //左右 l,r
+        System.out.println(tree01.toString02());
 
 
 

@@ -14,6 +14,10 @@ public class sortF_test {
         //sortF.straight_insertion(b);   //直接插入排序
         //sortF.QuickSort(b);        //快速排序
         //sortF.selectSort(b);           //选择排序
+        int []c=sortF.selectSort(b);
+        //System.out.println(Arrays.toString(c));
+        System.out.println("查找30：");
+        sortF.binarySearch(c,30);
 
 
 
