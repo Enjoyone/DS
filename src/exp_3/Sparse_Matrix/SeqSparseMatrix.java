@@ -116,36 +116,50 @@ public class SeqSparseMatrix {
     }
 
     public void fasttranstri(SeqSparseMatrix M) {
-        SeqSparseMatrix T=new SeqSparseMatrix(M.columns,M.rows);
-        //T.print(T);
-        //System.out.println(M.list);
-        //System.out.println(M.list.element[0]);
+        Triple[]ele=new Triple[M.list.n];
+        int k=0;
+        for (int i = 0 ;i < M.columns; i++) {//rows
+            for (int j = 0; j < M.rows; j++) {
+                if (k<M.list.n)
+                    ele[k]=new Triple(i,j,i+j+1);
+                k++;
+            }
+        }
+
+        SeqSparseMatrix T=new SeqSparseMatrix(M.columns,M.rows,ele);
         int tu=M.list.n;
+        int col,q;
+        System.out.println(T.list.n);
+        //for (int i = 0; i < T.list.n; i++) {
+        //    System.out.println(T.list.get(i));
+        //}
         //System.out.println(M.rows);
         //System.out.println( list.get(0));
 
-        int e=1;
-        int num[]=new int[M.columns+1];
-        int pos[]=new int[M.list.n];
+        int num[]=new int[M.columns];    //所在列的非0元素的个数
+        int pos[]=new int[M.list.n];        //M中第一个非0元素在T的位置
 
         if (tu>0) {
-            for(int col=1;col<=M.columns;++col)
+            for( col=0;col<M.columns;col++)
                 num[col]=0;
 
-            for(int t=1;t<=M.list.n;++t,e++){
-                for (int i = t+1; i <=M.list.n; i++) {
-                    if (list.get(t).column==list.get(i).column&&e<=M.columns)
-                        ++num[e];
+            //System.out.println(list.get(6).column);
+            for(int t=0;t<=M.columns;t++){
+                for (int i = 0; i <M.list.n; i++) {
+                    if (list.get(i).column == t)     //每个triple的列
+                        num[t]++;
                 }
             }
+            //System.out.println(Arrays.toString(num));//正确
 
-            System.out.println(Arrays.toString(num));
-            /*
-            pos[1]=1;//各列第一个非0元素在T的位置
+            //pos[1]=1;//各列第一个非0元素在T的位置
+            //for(col=2;col<=M.columns;++col)
+            //    pos[col]=pos[col-1]+num[col-1];
 
-            for(col=2;col<=M.columns;++col)
+            for (col=2;col<=M.columns;col++)
                 pos[col]=pos[col-1]+num[col-1];
-            for(p=1;p<=M.list.n;++p) {
+
+            /*for(p=1;p<=M.list.n;++p) {
                 col=M.data[p].j;
                 q=pos[col];
                 T.data[q].i=M.data[p].j;
@@ -153,7 +167,18 @@ public class SeqSparseMatrix {
                 T.data[q].e=M.data[p].e;
                 ++pos[col];
             }*/
+            //System.out.println("qw"+T.list.get(0).column);
+            for (int i = 0; i <M.list.n; i++) {
+                col=M.list.get(i).column;
+                q=pos[col];
+                T.list.get(q).row=M.list.get(i).column;
+                T.list.get(q).column=M.list.get(i).row;
+                T.list.get(q).value=M.list.get(i).value;
+                pos[col]++;
+            }
+            //System.out.println();
         }
+        T.print(T);
     }//转置时间复杂度为 O(nu+tu+nu+tu)=O(tu+nu)。
 
 
