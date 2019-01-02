@@ -1,17 +1,16 @@
-package exp_3;
+package exp_3.Strack;
 
+import exp_3.Strack.Expression;
 import exp_3.Strack.SeqStack;
-
 import java.util.Scanner;
-
 public class Stack_test {
     public static void main(String[] args) {
         //    (1)	栈-----基于顺序存储结构实现栈的基本操作
-       /* String[] a1 = {"a", "b", "c", "d", "e"};
+       String[] a1 = {"a", "b", "c", "d", "e"};
         SeqStack<String> stack01 = new SeqStack<String>(12);
         for (String a : a1)
             stack01.push(a);//依次入栈
-        System.out.println(stack01.size01());//获取栈的元素个数
+        System.out.println("获取栈的个数："+stack01.size01());//获取栈的元素个数
        //System.out.println(stack01.peek());
         //for (int i = stack01.size01(); i > 0; i--) {
          //   System.out.println(stack01.pop());
@@ -19,8 +18,8 @@ public class Stack_test {
         while (!stack01.isEmpty()){
             System.out.println(stack01.pop());
         }//出栈方法2
-        System.out.println(stack01.isEmpty());//判断元素是否全部出栈
-        System.out.println(stack01.toString());*/
+        System.out.println("判空："+stack01.isEmpty());//判断元素是否全部出栈
+        System.out.println("输出："+stack01.toString());
 
 //    a)	创建一个空栈
 //    b)	清空栈
@@ -47,10 +46,10 @@ public class Stack_test {
 
 //   *g)	计算算术表达式的值
         //使用已有的顺序站
-        /*String infix="123+10*(45-50+20)/((35-25)*2+10)-11";
+        String infix="123+10*(45-50+20)/((35-25)*2+10)-11";
         Expression post01=new Expression();
         StringBuffer a=post01.toPostfix(infix);
         System.out.println(a);
-        System.out.println(post01.toValue(a));*/
+        System.out.println(post01.toValue(a));
     }
 }

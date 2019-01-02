@@ -1,4 +1,4 @@
-package exp_3;
+package exp_3.Queue;
 
 import exp_3.Queue.LinkedQueue;
 

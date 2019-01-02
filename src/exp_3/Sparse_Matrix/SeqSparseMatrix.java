@@ -129,7 +129,7 @@ public class SeqSparseMatrix {
         SeqSparseMatrix T=new SeqSparseMatrix(M.columns,M.rows,ele);
         int tu=M.list.n;
         int col,q;
-        System.out.println(T.list.n);
+        //System.out.println(T.list.n);
         //for (int i = 0; i < T.list.n; i++) {
         //    System.out.println(T.list.get(i));
         //}
@@ -178,6 +178,7 @@ public class SeqSparseMatrix {
             }
             //System.out.println();
         }
+        System.out.println("转置后：");
         T.print(T);
     }//转置时间复杂度为 O(nu+tu+nu+tu)=O(tu+nu)。
 

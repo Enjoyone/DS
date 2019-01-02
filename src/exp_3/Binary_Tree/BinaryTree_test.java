@@ -1,4 +1,4 @@
-package exp_3;
+package exp_3.Binary_Tree;
 
 import exp_3.Binary_Tree.BinaryTree;
 
@@ -8,14 +8,14 @@ public class BinaryTree_test {
         BinaryTree<String>tree01=new BinaryTree<String>(prelist);
         System.out.println("先序："+tree01.toString());
 
-        //System.out.print("先序递归：");
-        //tree01.preorder();
+        System.out.print("先序递归：");
+        tree01.preorder();
         //tree01.NOpreorder();
 
-        //System.out.println("二叉树判空:"+tree01.isEmpty());
-        //System.out.println("二叉树的结点数:"+tree01.size());
-        //System.out.println("二叉树的高度:"+tree01.height());
-        //System.out.println("二叉树中叶子结点的数目:"+tree01.leafsize());
+        System.out.println("二叉树判空:"+tree01.isEmpty());
+        System.out.println("二叉树的结点数:"+tree01.size());
+        System.out.println("二叉树的高度:"+tree01.height());
+        System.out.println("二叉树中叶子结点的数目:"+tree01.leafsize());
 
 
         //tree01.NOinorder();

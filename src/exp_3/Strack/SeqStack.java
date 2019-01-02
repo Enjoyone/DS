@@ -1,7 +1,6 @@
 package exp_3.Strack;
 
 import T_seq.SeqList;
-
 public class SeqStack<T> implements Stack<T> {
     private SeqList<T>list;   //调用Seqlist来存储
     public SeqStack(int length){
